@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .order-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .address {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button id="confirmOrder" class="order-button">Confirm Order</button>
+        <p id="deliveryMessage" class="address hidden">Delivered to the Address</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#confirmOrder").click(function() {
+                $("#deliveryMessage").removeClass("hidden"); // Show delivery message
+            });
+        });
+    </script>
+
+</body>
+</html>

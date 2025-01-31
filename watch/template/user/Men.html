@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <body>
+        <nav class="navbar navbar-expand-lg" style="background: linear-gradient(90deg, #1e3c72, #2a5298);">
+          <div class="container-fluid">
+            <a class="navbar-brand text-white fw-bold fs-4" href="#">WaTcHeS_wOrLd</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="Men">Men</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="../Women">Women</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="kids">Kids</a>
+                </li> -->
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="../bookings">Booking</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="../view_cart">Cart</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle text-white fs-5" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">Category</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'category_view' category_id=1 %}">Men</a></li>
+                    <li><a class="dropdown-item" href="{% url 'category_view' category_id=3 %}">Women</a></li>
+                    <!-- <li><a class="dropdown-item" href="{% url 'category_view' category_id=2 %}">Kids</a></li> -->
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger fs-5 fw-bold" href="logout">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      
+        <style>
+          .navbar-nav .nav-link {
+            transition: color 0.3s, transform 0.3s;
+          }
+      
+          .navbar-nav .nav-link:hover {
+            color: #ffd700; /* Gold color on hover */
+            transform: scale(1.1); /* Slight zoom effect */
+          }
+      
+          .dropdown-menu {
+            background: #f1f1f1; /* Light gray background */
+            border-radius: 8px; /* Rounded corners */
+            border: none; /* Remove border */
+          }
+      
+          .dropdown-menu .dropdown-item {
+            color: #333; /* Darker text */
+            transition: background 0.3s;
+          }
+      
+          .dropdown-menu .dropdown-item:hover {
+            background: #f1c2e7; /* Same gradient as navbar */
+            color: #fff; /* White text */
+          }
+        </style>
+      </body>
+        
+      {% load static %}
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Watches for Men</title>
+        <style>
+          body {
+              font-family: 'Poppins', Arial, sans-serif;
+              background: linear-gradient(135deg, #f4f4f9, #e8eaf6);
+              margin: 0;
+              padding: 20px;
+              text-align: center;
+          }
+      
+          h1 {
+              font-size: 2.5rem;
+              color: #0baaad;
+              margin-bottom: 20px;
+              font-weight: 700;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+          }
+      
+          .container {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+              gap: 20px;
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 20px;
+          }
+      
+          .card {
+              background: linear-gradient(135deg, #ffffff, #f4f4f9);
+              border: 2px solid #ddd;
+              border-radius: 12px;
+              overflow: hidden;
+              transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+              text-align: center;
+          }
+      
+          .card:hover {
+              transform: scale(1.05);
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+              border-color: #0baaad;
+          }
+      
+          .card img {
+              max-width: 100%;
+              max-height: 150px;
+              transition: transform 0.3s ease;
+          }
+      
+          .card:hover img {
+              transform: scale(1.1);
+          }
+      
+          .card-content {
+              padding: 15px;
+          }
+      
+          .card-title {
+              font-size: 1rem;
+              color: #333;
+              font-weight: 600;
+              margin: 10px 0 0;
+          }
+        </style>
+      </head>
+      <body>
+      
+      <h1>Watches For Men</h1>
+      <div class="container">
+        <div class="card">
+            <img src="{% static 'images/m2.webp' %}" alt="Titan Men's Elegance Watch">
+            <div class="card-content">
+                <div class="card-title">Titan Men's Elegance Watch</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/m3.webp' %}" alt="Titan Men's Multifunction Karishma">
+            <div class="card-content">
+                <div class="card-title">Titan Men's Multifunction Karishma</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/m4.webp' %}" alt="Titan Men's Timeless Style Watch">
+            <div class="card-content">
+                <div class="card-title">Titan Men's Timeless Style Watch</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/m5.webp' %}" alt="Titan Men's Timeless Style Watch">
+            <div class="card-content">
+                <div class="card-title">Titan Men's Timeless Style Watch</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/m6.webp' %}" alt="Titan Men's Trendsetter Watch">
+            <div class="card-content">
+                <div class="card-title">Titan Men's Trendsetter Watch: Chic Blue Dial & Two-Tone Strap</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/m7.webp' %}" alt="Titan Neo Splash Quartz">
+            <div class="card-content">
+                <div class="card-title">Titan Neo Splash Blue Dial Quartz Multifunction Stainless Steel Strap watch for Men</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/m8.webp' %}" alt="Fastrack Dezire FX1">
+            <div class="card-content">
+                <div class="card-title">Fastrack Dezire FX1 with 3.5 CM UltraVU Display</div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/m9.webp' %}" alt="Titan Premium Chronograph">
+            <div class="card-content">
+                <div class="card-title">Titan Regalia Premium Green Chrono Stainless Steel Strap watch for Men</div>
+            </div>
+        </div>
+      </div>
+      
+      </body>
+      </html>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+  }
+
+  footer {
+    background-color: #2a3a48;
+    color: #dcdcdc;
+    padding: 40px 20px;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+  }
+
+  .footer-column a {
+    text-decoration: none;
+    color: #dcdcdc;
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-column a:hover {
+    color: #0baaad;
+  }
+
+  .footer-column .contact-info {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .footer-column .contact-info span {
+    color: #0baaad;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .social-links a {
+    text-decoration: none;
+    color: #dcdcdc;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: #0baaad;
+  }
+</style>
+</head>
+<body>
+
+<footer>
+<div class="footer-container">
+  <!-- Column 1 -->
+  <div class="footer-column">
+    <h3>Know Helios</h3>
+    <a href="#">About Us</a>
+    <a href="#">About Titan Company Limited</a>
+    <a href="#">Bulk Purchase & Corporate Gifting</a>
+  </div>
+
+  <!-- Column 2 -->
+  <div class="footer-column">
+    <h3>Terms & Conditions</h3>
+    <a href="#">Shipping & Return Policies</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">FAQs</a>
+  </div>
+
+  <!-- Column 3 -->
+  <div class="footer-column">
+    <h3>Contact Us</h3>
+    <p class="contact-info">
+      For Sale: <span>heliossupport@titan.co.in</span><br>
+      <span>+91-9355401889</span>
+    </p>
+    <p class="contact-info">
+      For Complaints: <span>1800 266 0123</span>
+    </p>
+    <p class="contact-info">
+      Chat Time: Our customer success team is available from Monday to Saturday, 09:00 to 17:30.
+    </p>
+    <p class="contact-info">
+      For Complaints: <span>customercare@titan.co.in</span>
+    </p>
+  </div>
+
+  <!-- Column 4 -->
+  <div class="footer-column">
+    <h3>Follow Us</h3>
+    <div class="social-links">
+      <a href="#" target="_blank">Twitter</a>
+      <a href="#" target="_blank">Facebook</a>
+      <a href="#" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+</footer>
+
+
+</body>
+    
+
+
+</html>

@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: rgba(235, 173, 221, 0.637);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Default style for carousel image */
+    .carousel-inner img {
+      width: 100%;
+      /* Make sure the image takes full width */
+      height: 400px;
+      /* Set a default height */
+      object-fit: cover;
+      background: linear-gradient(45deg, #ff6347, #6a5acd, #32cd32, #ff1493);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+    }
+
+    /* Media query for small screens (mobile devices) */
+    @media (max-width: 576px) {
+      .carousel-inner img {
+        width: 100%;
+        /* Ensure image takes full width */
+        height: 250px;
+        /* Smaller height for mobile */
+      }
+
+      .carousel-caption {
+        font-size: 14px;
+        /* Smaller font size for mobile */
+        padding: 8px 15px;
+        /* Adjust padding for mobile */
+      }
+    }
+
+    /* Media query for medium screens (tablets) */
+    @media (max-width: 768px) {
+      .carousel-inner img {
+        width: 100%;
+        height: 300px;
+        /* Adjust height for tablet screens */
+      }
+
+      .carousel-caption {
+        font-size: 16px;
+        /* Adjust font size */
+        padding: 10px 20px;
+        /* Adjust padding */
+      }
+    }
+
+    /* Media query for larger screens (desktops) */
+    @media (min-width: 992px) {
+      .carousel-inner img {
+        width: 100%;
+        height: 500px;
+        /* Adjust height for larger screens */
+      }
+
+      .carousel-caption {
+        font-size: 18px;
+        /* Larger font size for desktop */
+        padding: 12px 25px;
+        /* Adjust padding for larger screens */
+      }
+    }
+
+    /* Animation for gradient background */
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Container Styling */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* Card Styling */
+    .card {
+      position: relative;
+      background: #e8f9e9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .card .cta-button {
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    /* Card with Background */
+    .card[style="background: #d5efff;"] {
+      background: #d5efff;
+    }
+
+    /* Media Queries for Responsiveness */
+
+    /* Mobile Devices */
+    @media (max-width: 576px) {
+      .container {
+        grid-template-columns: 1fr;
+        /* Stack the cards on mobile */
+        padding: 15px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      .card img {
+        max-width: 100%;
+        /* Ensure the image takes the full width on mobile */
+      }
+
+      .card h2 {
+        font-size: 1.2rem;
+        /* Adjust heading size */
+      }
+
+      .card p {
+        font-size: 0.9rem;
+        /* Adjust paragraph font size */
+      }
+
+      .card .cta-button {
+        padding: 8px 16px;
+        /* Adjust button padding for mobile */
+      }
+    }
+
+    /* Tablet Devices */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+        /* Two cards per row for tablets */
+        padding: 20px;
+      }
+
+      .card img {
+        max-width: 100%;
+        /* Ensure image fits well in card */
+      }
+
+      .card h2 {
+        font-size: 1.4rem;
+        /* Adjust heading size */
+      }
+
+      .card p {
+        font-size: 1rem;
+        /* Adjust paragraph font size */
+      }
+
+      .card .cta-button {
+        padding: 10px 20px;
+        /* Adjust button padding */
+      }
+    }
+
+    /* Large Screen (Desktop) */
+    @media (min-width: 992px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+        /* Two cards per row on larger screens */
+        padding: 40px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card img {
+        max-width: 100%;
+      }
+
+      .card h2 {
+        font-size: 1.6rem;
+        /* Larger heading for desktop */
+      }
+
+      .card p {
+        font-size: 1.1rem;
+        /* Larger paragraph font size */
+      }
+
+      .card .cta-button {
+        padding: 12px 24px;
+        /* Larger button for desktop */
+      }
+    }
+
+    /* Container styling */
+    .container {
+      background-color: #eeeda3;
+      box-shadow: none;
+    }
+
+    /* Feature card styling */
+    .feature-card {
+      background-color: #6b7144;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-card img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature-card h5 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Background light */
+    .bg-light {
+      background-color: rgb(83, 83, 187);
+    }
+
+    /* Heading styles */
+    h1 {
+      color: rgb(180, 16, 16);
+      font-size: 2rem;
+      text-align: center;
+      text-decoration-color: #4042be;
+    }
+
+    h5 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #495057;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Container and padding */
+    .container-fluid {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .mt-4 {
+      margin-top: 4rem;
+    }
+
+    .pt-5 {
+      padding-top: 5rem;
+    }
+
+    .py-5 {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    /* Row layout */
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* Column styling */
+    .col-md-4 {
+      flex: 1;
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .col-md-4:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Image styling */
+    img.img-fluid {
+      width: 100%;
+      max-width: 170px;
+      margin-bottom: 15px;
+    }
+
+    /* Media Query for Mobile devices */
+    @media (max-width: 576px) {
+      .container {
+        padding: 15px;
+        /* Adjust padding for small screens */
+      }
+
+      .feature-card {
+        padding: 15px;
+        /* Reduce padding on smaller screens */
+      }
+
+      .feature-card img {
+        max-width: 150px;
+        /* Smaller image size for mobile */
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        /* Adjust h1 size for small screens */
+      }
+
+      h5 {
+        font-size: 1rem;
+        /* Adjust h5 size for small screens */
+      }
+
+      .col-md-4 {
+        flex: 1 1 100%;
+        /* Stack the cards on small screens */
+        margin-bottom: 15px;
+      }
+
+      img.img-fluid {
+        max-width: 130px;
+        /* Reduce image size on mobile */
+      }
+    }
+
+    .product-link {
+      text-decoration: none;
+      /* This removes the default underline */
+    }
+
+    /* Optional: Card hover effect (if you want to enhance the hover effect) */
+    .product-link:hover {
+      text-decoration: none;
+      /* Ensures no underline appears on hover */
+    }
+
+    /* Media Query for Tablets */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        /* Adjust padding for tablets */
+      }
+
+      .feature-card {
+        padding: 18px;
+        /* Adjust padding for tablets */
+      }
+
+      .feature-card img {
+        max-width: 180px;
+        /* Adjust image size for tablets */
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        /* Adjust h1 size for tablets */
+      }
+
+      h5 {
+        font-size: 1.1rem;
+        /* Adjust h5 size for tablets */
+      }
+
+      .col-md-4 {
+        flex: 1 1 48%;
+        /* 2 cards per row for tablets */
+        margin-bottom: 20px;
+      }
+
+      img.img-fluid {
+        max-width: 150px;
+        /* Adjust image size for tablets */
+      }
+    }
+
+    /* Media Query for Desktop (Large screens) */
+    @media (min-width: 992px) {
+      .row {
+        justify-content: space-evenly;
+        /* Evenly space out items on larger screens */
+      }
+
+      .col-md-4 {
+        flex: 1 1 30%;
+        /* 3 cards per row on large screens */
+      }
+
+      .feature-card {
+        padding: 20px;
+        /* Standard padding for larger screens */
+      }
+
+      .feature-card img {
+        max-width: 200px;
+        /* Standard image size for larger screens */
+      }
+
+      h1 {
+        font-size: 2rem;
+        /* Standard h1 size for larger screens */
+      }
+
+      h5 {
+        font-size: 1.2rem;
+        /* Standard h5 size for larger screens */
+      }
+
+      .col-md-4:hover {
+        transform: translateY(-10px);
+        /* Ensure hover effect is preserved */
+      }
+
+      img.img-fluid {
+        max-width: 170px;
+        /* Standard image size for larger screens */
+      }
+    }
+
+
+    .footer {
+      background-color: #D14B3A;
+      color: #FFD230;
+      padding: 20px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-section {
+      flex: 1 1 200px;
+      margin: 10px;
+      min-width: 180px;
+    }
+
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin: 5px 0;
+    }
+
+    .footer-section ul li a {
+      color: #FFD230;
+      text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-section form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-section input {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .footer-section button {
+      background-color: #fff;
+      color: #D14B3A;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .footer-section button:hover {
+      background-color: #FFD230;
+      color: #D14B3A;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      color: #FFD230;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      background-color: #FFD230;
+      color: #D14B3A;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+{% load static %}
+
+
+<body>
+  <nav class="navbar navbar-expand-lg" style="background: linear-gradient(90deg, #1e3c72, #2a5298);">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white fw-bold fs-4" href="#">WaTcHeS_wOrLd</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5" href="Men">Men</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5" href="Women">Women</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link text-white fs-5" href="Kids">Kids</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5" href="bookings">Booking</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5" href="view_cart">Cart</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle text-white fs-5" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Category</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'category_view' category_id=1 %}">Men</a></li>
+              <li><a class="dropdown-item" href="{% url 'category_view' category_id=3 %}">Women</a></li>
+              <!-- <li><a class="dropdown-item" href="{% url 'category_view' category_id=2 %}">Kids</a></li> -->
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5" href="contact">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger fs-5 fw-bold" href="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .navbar-nav .nav-link {
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffd700; /* Gold color on hover */
+      transform: scale(1.1); /* Slight zoom effect */
+    }
+
+    .dropdown-menu {
+      background: #f1f1f1; /* Light gray background */
+      border-radius: 8px; /* Rounded corners */
+      border: none; /* Remove border */
+    }
+
+    .dropdown-menu .dropdown-item {
+      color: #333; /* Darker text */
+      transition: background 0.3s;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+      background: #f1c2e7; /* Same gradient as navbar */
+      color: #fff; /* White text */
+    }
+  </style>
+</body>
+
+
+  <div id="demo" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    {% load static %}
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src="{%static 'images/wath1.webp' %}" alt="" class="d-block" style="width:100%">
+          
+         
+        
+
+        <div class="carousel-caption">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'images/wath2.webp' %}" alt="" class="d-block" style="width:100%;">
+        <div class="carousel-caption">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'images/wath3.webp' %}" alt="" class="d-block" style="width:100%">
+        <div class="carousel-caption">
+        </div>
+      </div>
+    </div>
+------------------------------
+
+  
+-------------------------
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+
+
+  <div class="container1">
+    <div class="row">
+      {% for pro in Product %}
+      <div class="col-lg-4">
+        <a href="product_view/{{pro.pk}}" class="product-link">
+          <div class="card" style="width:400px">
+            <img class="card-img-top" src="{{pro.img.url}}" alt="Card image" style="width:100%;height: 400px;">
+            <div class="card-body">
+              <h4 class="card-title">{{pro.name}}</h4>
+              <p class="card-text">{{pro.dis}}</p>
+              <p class="card-text">{{pro.offer_price}}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  ------------------------------
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px;
+      background-color: #000;
+    }
+
+    .feature-item {
+      text-align: center;
+      max-width: 150px;
+    }
+
+    .feature-item i {
+      font-size: 24px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .feature-item p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .feature-item span {
+      color: #ffcc00;
+      font-size: 12px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="features">
+    <div class="feature-item">
+      <i class="fas fa-crosshairs"></i>
+      <p>No Cost EMI above 7k</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-shopping-cart"></i>
+      <p>Ship in 24 hours</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-store"></i>
+      <p>1 yr Warranty</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-money-bill"></i>
+      <p>COD available up to 25k</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-wallet"></i>
+      <p>10% off on 1st purchase</p>
+      <span>Use: WELCOME10</span>
+    </div>
+  </div>
+  -----------------------------------
+  <!-- <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    h1 {
+      font-size: 2rem;
+      color: #0baaad;
+      margin-bottom: 5px;
+    }
+  
+    h2 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+  
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      padding: 0 20px;
+    }
+  
+    .brand-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      width: 100%;
+      height: 100px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+  
+    .brand-item img {
+      max-width: 80%;
+      max-height: 60%;
+    }
+  
+    .brand-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-color: #0baaad;
+    }
+  </style> -->
+
+  <style>
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background: linear-gradient(135deg, #f4f4f9, #e8eaf6);
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #0baaad;
+        margin-bottom: 5px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        color: #555;
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+
+    .brand-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    .brand-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #ffffff, #f4f4f9);
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        width: 100%;
+        height: 120px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .brand-item img {
+        max-width: 80%;
+        max-height: 60%;
+        transition: transform 0.3s ease;
+        z-index: 2;
+    }
+
+    .brand-item::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: linear-gradient(45deg, rgba(11, 170, 173, 0.1), rgba(11, 170, 173, 0.4));
+        transform: rotate(45deg);
+        transition: opacity 0.3s;
+        z-index: 1;
+        opacity: 0;
+    }
+
+    .brand-item:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        border-color: #0baaad;
+    }
+
+    .brand-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .brand-item:hover::before {
+        opacity: 1;
+    }
+</style>
+  </head>
+  <body>
+  
+  <h1>30+ INTERNATIONAL BRANDS</h1>
+  <h2>ONE TRUSTED DESTINATION</h2>
+  
+  <div class="brand-grid">
+    <div class="brand-item"><img src="{%static 'images/in1.jpg' %}" alt="Aigner"></div>
+    <div class="brand-item"><img src="{%static 'images/in2.jpg' %}" alt="Amazfit"></div>
+    <div class="brand-item"><img src="{%static 'images/in3.jpg' %}" alt="Anne Klein"></div>
+    <div class="brand-item"><img src="{%static 'images/in4.jpg' %}" alt="Armani Exchange"></div>
+    <div class="brand-item"><img src="{%static 'images/in5.jpg' %}" alt="Balmain"></div>
+    <div class="brand-item"><img src="{%static 'images/in6.jpg' %}" alt="Boss"></div>
+    <div class="brand-item"><img src="{%static 'images/in7.jpg' %}" alt="Calvin Klein"></div>
+    <div class="brand-item"><img src="{%static 'images/in8.jpg' %}" alt="Casio"></div>
+    <div class="brand-item"><img src="{%static 'images/in9.jpg' %}" alt="Cerruti"></div>
+    <div class="brand-item"><img src="{%static 'images/in10.jpg' %}" alt="Charriol"></div>
+    <div class="brand-item"><img src="{%static 'images/in11.jpg' %}" alt="Citizen"></div>
+    <div class="brand-item"><img src="{%static 'images/in12.jpg' %}" alt="Coach"></div>
+    <div class="brand-item"><img src="{%static 'images/in13.jpg' %}" alt="Diesel"></div>
+    <div class="brand-item"><img src="{%static 'images/in14.jpg' %}" alt="Edge"></div>
+    <div class="brand-item"><img src="{%static 'images/in15.jpg' %}" alt="Emporio Armani"></div>
+    <div class="brand-item"><img src="{%static 'images/in16.jpg' %}" alt="Borel"></div>
+    <div class="brand-item"><img src="{%static 'images/in17.jpg' %}" alt="Fitbit"></div>
+    <div class="brand-item"><img src="{%static 'images/1p.jpg' %}" alt="Fossil"></div>
+    <div class="brand-item"><img src="{%static 'images/2p.png' %}" alt="Frederique Constant"></div>
+    <div class="brand-item"><img src="{%static 'images/4p.jpg' %}" alt="G-Shock"></div>
+    <div class="brand-item"><img src="{%static 'images/5p.png' %}" alt="GC"></div>
+    <div class="brand-item"><img src="{%static 'images/6p.png' %}" alt="Guess"></div>
+    <div class="brand-item"><img src="{%static 'images/7p.png' %}" alt="Herbelin"></div>
+    <div class="brand-item"><img src="{%static 'images/9p.png' %}" alt="JustCavalli"></div>
+    <div class="brand-item"><img src="{%static 'images/10p.jpg' %}" alt="Kenneth Cole"></div>
+    <div class="brand-item"><img src="{%static 'images/11p.png' %}" alt="Michael Kors"></div>
+    <div class="brand-item"><img src="{%static 'images/12p.png' %}" alt="Milus"></div>
+    <div class="brand-item"><img src="{%static 'images/13p.png' %}" alt="Movado"></div>
+    <div class="brand-item"><img src="{%static 'images/14p.png' %}" alt="Nebula"></div>
+    <div class="brand-item"><img src="{%static 'images/15p.jpg' %}" alt="Police"></div>
+    <!-- <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Raga" alt="Raga"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Seiko" alt="Seiko"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=SevenFriday" alt="SevenFriday"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Swarovski" alt="Swarovski"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Tissot" alt="Tissot"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Titan" alt="Titan"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Versace" alt="Versace"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Victorinox" alt="Victorinox"></div>
+    <div class="brand-item"><img src="https://via.placeholder.com/80x40?text=Xylys" alt="Xylys"></div> -->
+  </div>
+  
+  
+  ---------------------------------
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+    }
+
+    footer {
+      background-color: #2a3a48;
+      color: #dcdcdc;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-column h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #ffffff;
+      text-transform: uppercase;
+      border-bottom: 1px solid #444;
+      padding-bottom: 5px;
+    }
+
+    .footer-column a {
+      text-decoration: none;
+      color: #dcdcdc;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: #0baaad;
+    }
+
+    .footer-column .contact-info {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .footer-column .contact-info span {
+      color: #0baaad;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: #dcdcdc;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #0baaad;
+    }
+  </style>
+</head>
+<body>
+
+<footer>
+  <div class="footer-container">
+    <!-- Column 1 -->
+    <div class="footer-column">
+      <h3>WaTcHeS_wOrLd</h3>
+      <a href="#">About Us</a>
+      <a href="#">About Titan Company Limited</a>
+      <!-- <a href="#">Bulk Purchase & Corporate Gifting</a> -->
+    </div>
+
+    <!-- Column 2 -->
+    <div class="footer-column">
+      <h3>Terms & Conditions</h3>
+      <a href="#">Shipping & Return Policies</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">FAQs</a>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <p class="contact-info">
+        For Sale: <span>watches_worldsupport@titan.co.in</span><br>
+        <span>+91-9355401889</span>
+      </p>
+      <p class="contact-info">
+        For Complaints: <span>1800 266 0123</span>
+      </p>
+      <!-- <p class="contact-info">
+        Chat Time: Our customer success team is available from Monday to Saturday, 09:00 to 17:30.
+      </p> -->
+      <p class="contact-info">
+        For Complaints: <span>customercare@titan.co.in</span>
+      </p>
+    </div>
+
+    <!-- Column 4 -->
+    <div class="footer-column">
+      <h3>Follow Us</h3>
+      <div class="social-links">
+        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
