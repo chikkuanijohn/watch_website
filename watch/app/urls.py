@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import update_stock
 from .views import  view_bookings
-from .views import order_form, review_order
+
+from .views import order_page, confirm_order, order_success
 from .import views
 
 
@@ -39,6 +40,8 @@ urlpatterns = [
     path("view_bookings/", view_bookings, name="view_bookings"),
     # path("confirm_order/<int:order_id>/", confirm_order, name="confirm_order"),
     # path("admin_orders/", admin_manage_orders, name="admin_orders"),
-    path("order/", order_form, name="order_form"),
-    path("review-order/<int:order_id>/", review_order, name="review_order"),
+    path("order/", order_page, name="order_page"),
+    path("confirm_order/", confirm_order, name="confirm_order"),
+    path("order_success/", order_success, name="order_success"),
+    
 ]

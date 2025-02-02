@@ -373,23 +373,25 @@ def update_stock(request, product_id):
 
 
 
+def order_page(request):
+    return render(request, "order.html")
 
-def order_form(request):
-    """ Renders the order form and handles form submission """
+def confirm_order(request):
     if request.method == "POST":
         name = request.POST.get("name")
         address = request.POST.get("address")
         pincode = request.POST.get("pincode")
+        payment_mode = request.POST.get("payment_mode")
 
-        if name and address and pincode:
-            # Save order details to the database
-            order = Order.objects.create(name=name, address=address, pincode=pincode)
-            return redirect('review_order', order_id=order.id)  # Redirect to review page
+        # Show success message
+        messages.success(request, f"Order placed successfully! Payment Mode: {payment_mode}")
 
-    return render(request, "order_form.html")  # Render order form template
+        # Redirect to the success page
+        return redirect("order_success")  
+    
+    return redirect("order_page")
+
+def order_success(request):
+    return render(request, "order_success.html")
 
 
-def review_order(request, order_id):
-    """ Renders the review order page """
-    order = get_object_or_404(Order, id=order_id)
-    return render(request, "review_order.html", {"order": order})
