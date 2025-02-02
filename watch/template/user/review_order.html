@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Your Order</title>
+</head>
+<body>
+    <h2>Review Your Order</h2>
+    <p><strong>Name:</strong> {{ order.name }}</p>
+    <p><strong>Address:</strong> {{ order.address }}</p>
+    <p><strong>Pincode:</strong> {{ order.pincode }}</p>
+
+    <a href="{% url 'order_form' %}">Edit Order</a>
+    <button>Place Order</button>
+</body>
+</html>
+

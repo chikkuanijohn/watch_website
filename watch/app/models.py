@@ -34,3 +34,11 @@ class Buy(models.Model):
     qty=models.IntegerField()
     price=models.IntegerField()
     date=models.DateField(auto_now_add=True)
+
+
+
+class Order(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.TextField()
+    pincode = models.CharField(max_length=10)
+    created_at = models.DateTimeField(auto_now_add=True)

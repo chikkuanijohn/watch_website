@@ -12,7 +12,7 @@ import json
 from .models import Product
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-
+from .models import Order
 
 # Create your views here.
 def shop_login(req):
@@ -374,59 +374,22 @@ def update_stock(request, product_id):
 
 
 
-@login_required
-def book_appointment(request):
+def order_form(request):
+    """ Renders the order form and handles form submission """
     if request.method == "POST":
         name = request.POST.get("name")
-        age = request.POST.get("age")
-        appointment_date = request.POST.get("appointmentdate")
-        reason = request.POST.get("reason")
-        email = request.POST.get("email")
-        
-        # Save to database
-        Appointment.objects.create(
-            patient_name=name,
-            age=age,
-            appointment_date=appointment_date,
-            reason_for_appointment=reason,
-            email=email,
-            user=request.user
-        )
+        address = request.POST.get("address")
+        pincode = request.POST.get("pincode")
 
-        messages.success(request, "Your appointment has been booked successfully!")
-        return redirect("view_bookings")  # Redirect to view bookings
+        if name and address and pincode:
+            # Save order details to the database
+            order = Order.objects.create(name=name, address=address, pincode=pincode)
+            return redirect('review_order', order_id=order.id)  # Redirect to review page
 
-    return render(request, "book_appointment.html")
+    return render(request, "order_form.html")  # Render order form template
 
-# View to display booked appointments (For Admins)
-@login_required
-def view_bookings(request):
-    if not request.user.is_staff:  # Only allow admins to view bookings
-        messages.error(request, "Access denied!")
-        return redirect("home")
 
-    bookings = Appointment.objects.all()
-    return render(request, "view_bookings.html", {"view_bookings": bookings})
-
-# View for users to confirm orders
-@login_required
-def confirm_order(request, order_id):
-    order = get_object_or_404(Order, id=order_id, user=request.user)
-
-    if request.method == "POST":
-        order.status = "Confirmed"
-        order.save()
-        messages.success(request, "Your order has been confirmed successfully!")
-        return redirect("order_summary")
-
-    return render(request, "confirm_order.html", {"order": order})
-
-# View for admins to manage orders
-@login_required
-def admin_manage_orders(request):
-    if not request.user.is_staff:  # Only admins can access
-        messages.error(request, "Access denied!")
-        return redirect("home")
-
-    orders = Order.objects.all()
-    return render(request, "admin_orders.html", {"orders": orders})
+def review_order(request, order_id):
+    """ Renders the review order page """
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, "review_order.html", {"order": order})
