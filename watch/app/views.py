@@ -395,3 +395,15 @@ def order_success(request):
     return render(request, "order_success.html")
 
 
+
+
+
+
+def category_view(request, category_id):
+    if category_id == 1:
+        return render(request, 'men.html')  # Redirect to men.html
+    elif category_id == 2:
+        return render(request, 'women.html')  # Example for Women category
+    else:
+        return render(request, 'not_found.html')  # Optional: Handle invalid categories
+
